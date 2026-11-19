@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Купить баксы в Adopt Me за Telegram Stars — быстрая передача</title>
-<meta name="description" content="Купить баксы (Bucks) в Adopt Me Roblox за звёзды и подарки Telegram. Выгодный курс от 10 000 до 100 000 баксов, быстрая ручная передача и поддержка в чате.">
+<meta name="description" content="Купить баксы (Bucks) в Adopt Me Roblox за звёзды и подарки Telegram. Выгодный курс от 10 000 до 100 000 баксов, быстрая ручная передача и заявка на сайте.">
 <meta name="keywords" content="купить баксы adopt me, баксы адопт ми за звезды телеграм, adopt me bucks telegram stars, купить валюту адопт ми, обмен подарков телеграм на баксы">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,7 @@
   --gold-2: #ff9d2e;
   --teal: #35e0d0;
   --green: #34d399;
+  --red: #ff6b6b;
   --radius: 24px;
 }
 
@@ -30,10 +31,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -296,6 +293,27 @@ h1 {
   font-size: 13px;
 }
 
+.plan-pay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 18px;
+  padding: 13px 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #17120a;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.plan-pay:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(255, 175, 45, 0.3);
+}
+
 .order {
   padding: 30px;
   border-radius: 30px;
@@ -387,7 +405,74 @@ h1 {
   color: #fff;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-weight: 700;
-  user-select: all;
+  text-decoration: none;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.field input::placeholder {
+  color: #6b7391;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: rgba(255, 207, 77, 0.55);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.field select option {
+  background: #10121d;
+  color: #fff;
+}
+
+#order-form button {
+  width: 100%;
+}
+
+.form-status {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-status.success {
+  color: var(--green);
+}
+
+.form-status.error {
+  color: var(--red);
 }
 
 .features {
@@ -501,6 +586,7 @@ footer {
       <div class="logo-mark">🐾</div>
       Adopt<span>Me</span> Bucks
     </div>
+
     <div class="status">
       <span class="dot"></span>
       Онлайн • ручная передача
@@ -519,7 +605,7 @@ footer {
 
     <p>
       Выбери нужное количество баксов — сайт сразу покажет, какие подарки Telegram отправить.
-      После подтверждения передаю валюту в игре.
+      После оплаты заполни заявку, и мы передадим Bucks через манекен.
     </p>
 
     <div class="hero-actions">
@@ -531,7 +617,7 @@ footer {
   <section class="section" id="plans">
     <div class="section-head">
       <h2><span class="number">1</span>Выбери пакет Bucks</h2>
-      <p>Цены указаны в Telegram Stars. Подарки можно отправлять в любой комбинации из указанных ниже.</p>
+      <p>После выбора пакета сайт автоматически покажет нужные подарки для оплаты.</p>
     </div>
 
     <div class="plans" id="plans-grid"></div>
@@ -552,19 +638,64 @@ footer {
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <div>Отправьте указанные подарки в Telegram на аккаунт <span class="username">@ВАШ_ЮЗЕРНЕЙМ</span></div>
+          <div>
+            Нажми <b>«Оплатить»</b> — откроется Telegram-аккаунт
+            <a class="username" href="https://t.me/metadps" target="_blank" rel="noopener">@metadps</a>.
+            Отправь подарки, указанные выше.
+          </div>
         </div>
 
         <div class="step">
           <div class="step-num">2</div>
-          <div>Откройте <b>онлайн-чат в правом нижнем углу сайта</b> и напишите ник в Roblox и сумму заказа.</div>
+          <div>После оплаты заполни заявку ниже: ник в Roblox, Telegram и выбранный пакет.</div>
         </div>
 
         <div class="step">
           <div class="step-num">3</div>
-          <div>После проверки подарков добавимся в друзья в Roblox и передам Bucks через кассу либо стойку с лимонадом / хот-догами.</div>
+          <div>Мы проверим оплату и передадим Bucks через <b>манекен</b> в Adopt Me.</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="order-form">
+    <div class="section-head">
+      <h2><span class="number">3</span>Оформить заявку</h2>
+      <p>Заполни данные и нажми «Оформить заявку». Заявка сохранится на сайте.</p>
+    </div>
+
+    <div class="order">
+      <form id="order-form">
+        <div class="form-grid">
+          <label class="field">
+            <span>Ник в Roblox *</span>
+            <input type="text" id="roblox-nick" placeholder="Например: Player123" required>
+          </label>
+
+          <label class="field">
+            <span>Твой Telegram *</span>
+            <input type="text" id="client-telegram" placeholder="@username" required>
+          </label>
+
+          <label class="field">
+            <span>Выбранный пакет Bucks *</span>
+            <select id="selected-plan" required>
+              <option value="">Выберите пакет</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="gift-box">
+          <div class="gift-label">Оплата для выбранного пакета</div>
+          <div class="gift-output" id="form-gift-output">Выберите пакет выше</div>
+        </div>
+
+        <button type="submit" class="button button-primary">
+          Оформить заявку
+        </button>
+
+        <div id="form-status" class="form-status"></div>
+      </form>
     </div>
   </section>
 
@@ -584,13 +715,13 @@ footer {
       <div class="feature">
         <div class="feature-icon">🎁</div>
         <h3>Удобная оплата</h3>
-        <p>Принимаем Сердце, Розу, Торт и Кубок — сайт сразу рассчитывает нужную комбинацию.</p>
+        <p>Подарки рассчитываются автоматически после выбора нужного количества Bucks.</p>
       </div>
 
       <div class="feature">
-        <div class="feature-icon">💬</div>
-        <h3>Поддержка на сайте</h3>
-        <p>Все заказы подтверждаются в онлайн-чате: ник, сумма и статус передачи.</p>
+        <div class="feature-icon">🐾</div>
+        <h3>Передача через манекен</h3>
+        <p>После подтверждения оплаты мы добавляемся в друзья и передаём Bucks через манекен.</p>
       </div>
     </div>
   </section>
@@ -609,7 +740,7 @@ footer {
 
       <div class="faq-item">
         <h3>Как происходит передача баксов?</h3>
-        <p>После подтверждения оплаты мы добавляемся в друзья в Roblox, заходим на один сервер и передаём Bucks через кассу или стойку с лимонадом / хот-догами.</p>
+        <p>После подтверждения оплаты мы добавляемся в друзья в Roblox, заходим на один сервер и передаём Bucks через манекен.</p>
       </div>
 
       <div class="faq-item">
@@ -628,41 +759,161 @@ footer {
 
 <script>
 const plans = [
-  { bucks: "10 000 Bucks", stars: "40 ⭐", rub: "≈ 50 ₽", gifts: "Роза (25 ⭐) + Сердце (15 ⭐)", tag: "" },
-  { bucks: "15 000 Bucks", stars: "50 ⭐", rub: "≈ 75 ₽", gifts: "Торт (50 ⭐)", tag: "" },
-  { bucks: "20 000 Bucks", stars: "75 ⭐", rub: "≈ 100 ₽", gifts: "Торт (50 ⭐) + Роза (25 ⭐)", tag: "" },
-  { bucks: "25 000 Bucks", stars: "100 ⭐", rub: "≈ 125 ₽", gifts: "Кубок (100 ⭐)", tag: "Выгодно" },
-  { bucks: "30 000 Bucks", stars: "100 ⭐", rub: "≈ 150 ₽", gifts: "Кубок (100 ⭐)", tag: "Хит" },
-  { bucks: "40 000 Bucks", stars: "150 ⭐", rub: "≈ 200 ₽", gifts: "Кубок (100 ⭐) + Торт (50 ⭐)", tag: "" },
-  { bucks: "50 000 Bucks", stars: "200 ⭐", rub: "≈ 250 ₽", gifts: "2 × Кубок (по 100 ⭐)", tag: "" },
-  { bucks: "75 000 Bucks", stars: "250 ⭐", rub: "≈ 375 ₽", gifts: "2 × Кубок (по 100 ⭐) + Торт (50 ⭐)", tag: "" },
-  { bucks: "100 000 Bucks", stars: "350 ⭐", rub: "≈ 500 ₽", gifts: "3 × Кубок (по 100 ⭐) + Торт (50 ⭐)", tag: "Максимум" }
+  {
+    bucks: "10 000 Bucks",
+    stars: "40 ⭐",
+    gifts: "Роза (25 ⭐) + Сердце (15 ⭐)",
+    tag: ""
+  },
+  {
+    bucks: "15 000 Bucks",
+    stars: "50 ⭐",
+    gifts: "Торт (50 ⭐)",
+    tag: ""
+  },
+  {
+    bucks: "20 000 Bucks",
+    stars: "75 ⭐",
+    gifts: "Торт (50 ⭐) + Роза (25 ⭐)",
+    tag: ""
+  },
+  {
+    bucks: "25 000 Bucks",
+    stars: "100 ⭐",
+    gifts: "Кубок (100 ⭐)",
+    tag: "Выгодно"
+  },
+  {
+    bucks: "30 000 Bucks",
+    stars: "100 ⭐",
+    gifts: "Кубок (100 ⭐)",
+    tag: "Хит"
+  },
+  {
+    bucks: "40 000 Bucks",
+    stars: "150 ⭐",
+    gifts: "Кубок (100 ⭐) + Торт (50 ⭐)",
+    tag: ""
+  },
+  {
+    bucks: "50 000 Bucks",
+    stars: "200 ⭐",
+    gifts: "2 × Кубок (по 100 ⭐)",
+    tag: ""
+  },
+  {
+    bucks: "75 000 Bucks",
+    stars: "250 ⭐",
+    gifts: "2 × Кубок (по 100 ⭐) + Торт (50 ⭐)",
+    tag: ""
+  },
+  {
+    bucks: "100 000 Bucks",
+    stars: "350 ⭐",
+    gifts: "3 × Кубок (по 100 ⭐) + Торт (50 ⭐)",
+    tag: "Максимум"
+  }
 ];
 
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqGIIt4fpW__7YoBd5yV0F4O1iAF47yZ5_nynR0qfOux15Pxpv56VXHS1IsRq4v1gkdA/exec";
+
 const grid = document.getElementById("plans-grid");
-const output = document.getElementById("gift-output");
+const giftOutput = document.getElementById("gift-output");
+const formGiftOutput = document.getElementById("form-gift-output");
+const planSelect = document.getElementById("selected-plan");
+const form = document.getElementById("order-form");
+const formStatus = document.getElementById("form-status");
 
 plans.forEach((plan, index) => {
   const card = document.createElement("div");
-  card.className = "plan" + (index === 0 ? " active" : "");
+  card.className = "plan";
 
   card.innerHTML = `
     ${plan.tag ? `<div class="plan-tag">${plan.tag}</div>` : ""}
     <div class="plan-bucks">${plan.bucks}</div>
     <div class="plan-stars">${plan.stars}</div>
-    <div class="plan-rub">Эквивалент: ${plan.rub}</div>
+    <div class="plan-rub">Оплата: ${plan.gifts}</div>
+    <a class="plan-pay" href="https://t.me/metadps" target="_blank" rel="noopener">
+      Оплатить
+    </a>
   `;
 
-  card.addEventListener("click", () => {
+  card.addEventListener("click", event => {
+    if (event.target.closest(".plan-pay")) return;
+
     document.querySelectorAll(".plan").forEach(item => item.classList.remove("active"));
     card.classList.add("active");
-    output.textContent = `${plan.bucks} → отправьте: ${plan.gifts}`;
+
+    giftOutput.textContent = `${plan.bucks} → отправьте: ${plan.gifts}`;
+    formGiftOutput.textContent = plan.gifts;
+    planSelect.value = index;
   });
 
   grid.appendChild(card);
+
+  const option = document.createElement("option");
+  option.value = index;
+  option.textContent = `${plan.bucks} — ${plan.stars}`;
+  planSelect.appendChild(option);
 });
 
-output.textContent = `${plans[0].bucks} → отправьте: ${plans[0].gifts}`;
+giftOutput.textContent = `${plans[0].bucks} → отправьте: ${plans[0].gifts}`;
+formGiftOutput.textContent = plans[0].gifts;
+
+form.addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const submitButton = form.querySelector("button[type='submit']");
+  const originalText = submitButton.textContent;
+
+  const robloxNick = document.getElementById("roblox-nick").value.trim();
+  const clientTelegram = document.getElementById("client-telegram").value.trim();
+  const plan = plans[planSelect.value];
+
+  if (!robloxNick || !clientTelegram || !plan) {
+    formStatus.textContent = "❌ Заполните ник, Telegram и выберите пакет.";
+    formStatus.className = "form-status error";
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Отправляем...";
+  formStatus.textContent = "";
+  formStatus.className = "form-status";
+
+  try {
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify({
+        robloxNick: robloxNick,
+        clientTelegram: clientTelegram,
+        plan: plan.bucks,
+        gifts: plan.gifts,
+        comment: ""
+      })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      form.reset();
+      formGiftOutput.textContent = "Выберите пакет выше";
+      formStatus.textContent = "✅ Заявка отправлена! После проверки оплаты мы передадим Bucks через манекен.";
+      formStatus.className = "form-status success";
+    } else {
+      throw new Error(result.error || "Ошибка отправки");
+    }
+  } catch (error) {
+    formStatus.textContent = "❌ Не удалось отправить заявку. Попробуйте ещё раз.";
+    formStatus.className = "form-status error";
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalText;
+  }
+});
 </script>
 
 <!-- СЮДА ВСТАВЬТЕ КОД БЕСПЛАТНОГО ОНЛАЙН-ЧАТА ПЕРЕД ЗАКРЫВАЮЩИМ ТЕГОМ BODY -->
