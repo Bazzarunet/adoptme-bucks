@@ -570,21 +570,26 @@ footer {
     </div>
 
     <div class="order">
-      <form id="order-form">
+      <form
+        id="order-form"
+        action="https://script.google.com/macros/s/AKfycbzqGIIt4fpW__7YoBd5yV0F4O1iAF47yZ5_nynR0qfOux15Pxpv56VXHS1IsRq4v1gkdA/exec"
+        method="POST"
+        target="hidden_iframe"
+      >
         <div class="form-grid">
           <label class="field">
             <span>Ник в Roblox *</span>
-            <input type="text" id="roblox-nick" placeholder="Например: Player123" required>
+            <input type="text" name="robloxNick" placeholder="Например: Player123" required>
           </label>
 
           <label class="field">
             <span>Твой Telegram *</span>
-            <input type="text" id="client-telegram" placeholder="@username" required>
+            <input type="text" name="clientTelegram" placeholder="@username" required>
           </label>
 
           <label class="field">
             <span>Выбранный пакет Bucks *</span>
-            <select id="selected-plan" required>
+            <select name="plan" id="selected-plan" required>
               <option value="">Выберите пакет</option>
             </select>
           </label>
@@ -595,12 +600,21 @@ footer {
           <div class="gift-output" id="form-gift-output">Выберите пакет выше</div>
         </div>
 
+        <input type="hidden" name="gifts" id="gifts-input">
+        <input type="hidden" name="comment" value="">
+
         <button type="submit" class="button button-primary">
           Оформить заявку
         </button>
 
         <div id="form-status" class="form-status"></div>
       </form>
+
+      <iframe
+        name="hidden_iframe"
+        id="hidden_iframe"
+        style="display: none;"
+      ></iframe>
     </div>
   </section>
 
@@ -746,16 +760,16 @@ const plans = [
   }
 ];
 
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqGIIt4fpW__7YoBd5yV0F4O1iAF47yZ5_nynR0qfOux15Pxpv56VXHS1IsRq4v1gkdA/exec";
-
 const grid = document.getElementById("plans-grid");
 const planSelect = document.getElementById("selected-plan");
 const formGiftOutput = document.getElementById("form-gift-output");
 const paymentGiftOutput = document.getElementById("payment-gift-output");
+const giftsInput = document.getElementById("gifts-input");
 const form = document.getElementById("order-form");
 const formStatus = document.getElementById("form-status");
+const hiddenIframe = document.getElementById("hidden_iframe");
 
-plans.forEach((plan, index) => {
+plans.forEach(plan => {
   const card = document.createElement("div");
   card.className = "plan";
 
@@ -770,82 +784,59 @@ plans.forEach((plan, index) => {
     document.querySelectorAll(".plan").forEach(item => item.classList.remove("active"));
     card.classList.add("active");
 
-    planSelect.value = index;
+    planSelect.value = plan.bucks;
     updateGifts();
   });
 
   grid.appendChild(card);
 
   const option = document.createElement("option");
-  option.value = index;
+  option.value = plan.bucks;
   option.textContent = `${plan.bucks} — ${plan.stars}`;
   planSelect.appendChild(option);
 });
 
 function updateGifts() {
-  const plan = plans[planSelect.value];
+  const plan = plans.find(item => item.bucks === planSelect.value);
 
   if (!plan) {
     formGiftOutput.textContent = "Выберите пакет выше";
     paymentGiftOutput.textContent = "Выберите пакет в заявке выше";
+    giftsInput.value = "";
     return;
   }
 
   formGiftOutput.textContent = plan.gifts;
   paymentGiftOutput.textContent = plan.gifts;
+  giftsInput.value = plan.gifts;
 }
 
 planSelect.addEventListener("change", updateGifts);
 
-form.addEventListener("submit", async event => {
-  event.preventDefault();
+form.addEventListener("submit", () => {
+  const plan = plans.find(item => item.bucks === planSelect.value);
 
-  const submitButton = form.querySelector("button[type='submit']");
-  const originalText = submitButton.textContent;
-
-  const robloxNick = document.getElementById("roblox-nick").value.trim();
-  const clientTelegram = document.getElementById("client-telegram").value.trim();
-  const plan = plans[planSelect.value];
-
-  if (!robloxNick || !clientTelegram || !plan) {
-    formStatus.textContent = "❌ Заполните ник, Telegram и выберите пакет.";
+  if (!plan) {
+    formStatus.textContent = "❌ Выберите пакет Bucks.";
     formStatus.className = "form-status error";
     return;
   }
 
-  submitButton.disabled = true;
-  submitButton.textContent = "Отправляем...";
-  formStatus.textContent = "";
+  giftsInput.value = plan.gifts;
+
+  formStatus.textContent = "Отправляем заявку...";
   formStatus.className = "form-status";
+});
 
-  try {
-    const formData = new URLSearchParams();
-    formData.append("robloxNick", robloxNick);
-    formData.append("clientTelegram", clientTelegram);
-    formData.append("plan", plan.bucks);
-    formData.append("gifts", plan.gifts);
-    formData.append("comment", "");
-
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-      },
-      body: formData
-    });
-
+hiddenIframe.addEventListener("load", () => {
+  if (formStatus.textContent === "Отправляем заявку...") {
     form.reset();
     formGiftOutput.textContent = "Выберите пакет выше";
     paymentGiftOutput.textContent = "Выберите пакет в заявке выше";
+    giftsInput.value = "";
+
     formStatus.textContent = "✅ Заявка отправлена! Отправьте указанные подарки на @metadps. После проверки мы передадим Bucks через манекен.";
     formStatus.className = "form-status success";
-  } catch (error) {
-    formStatus.textContent = "❌ Не удалось отправить заявку. Попробуйте ещё раз.";
-    formStatus.className = "form-status error";
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = originalText;
   }
 });
 </script>
