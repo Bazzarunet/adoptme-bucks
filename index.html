@@ -343,6 +343,11 @@ h1 {
   line-height: 1.35;
 }
 
+.gift-output a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -814,31 +819,27 @@ form.addEventListener("submit", async event => {
   formStatus.className = "form-status";
 
   try {
-    const response = await fetch(APPS_SCRIPT_URL, {
+    const formData = new URLSearchParams();
+    formData.append("robloxNick", robloxNick);
+    formData.append("clientTelegram", clientTelegram);
+    formData.append("plan", plan.bucks);
+    formData.append("gifts", plan.gifts);
+    formData.append("comment", "");
+
+    await fetch(APPS_SCRIPT_URL, {
       method: "POST",
+      mode: "no-cors",
       headers: {
-        "Content-Type": "text/plain;charset=utf-8"
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
       },
-      body: JSON.stringify({
-        robloxNick: robloxNick,
-        clientTelegram: clientTelegram,
-        plan: plan.bucks,
-        gifts: plan.gifts,
-        comment: ""
-      })
+      body: formData
     });
 
-    const result = await response.json();
-
-    if (result.success) {
-      form.reset();
-      formGiftOutput.textContent = "Выберите пакет выше";
-      paymentGiftOutput.textContent = "Выберите пакет в заявке выше";
-      formStatus.textContent = "✅ Заявка отправлена! Отправьте указанные подарки на @metadps. После проверки мы передадим Bucks через манекен.";
-      formStatus.className = "form-status success";
-    } else {
-      throw new Error(result.error || "Ошибка отправки");
-    }
+    form.reset();
+    formGiftOutput.textContent = "Выберите пакет выше";
+    paymentGiftOutput.textContent = "Выберите пакет в заявке выше";
+    formStatus.textContent = "✅ Заявка отправлена! Отправьте указанные подарки на @metadps. После проверки мы передадим Bucks через манекен.";
+    formStatus.className = "form-status success";
   } catch (error) {
     formStatus.textContent = "❌ Не удалось отправить заявку. Попробуйте ещё раз.";
     formStatus.className = "form-status error";
