@@ -293,27 +293,6 @@ h1 {
   font-size: 13px;
 }
 
-.plan-pay {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: 18px;
-  padding: 13px 18px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-2));
-  color: #17120a;
-  font-weight: 800;
-  font-size: 14px;
-  text-decoration: none;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.plan-pay:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(255, 175, 45, 0.3);
-}
-
 .order {
   padding: 30px;
   border-radius: 30px;
@@ -362,50 +341,6 @@ h1 {
   font-weight: 800;
   color: var(--gold);
   line-height: 1.35;
-}
-
-.steps {
-  display: grid;
-  gap: 12px;
-}
-
-.step {
-  display: flex;
-  gap: 14px;
-  padding: 16px 18px;
-  border-radius: 18px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.step b {
-  color: var(--text);
-}
-
-.step-num {
-  flex: 0 0 auto;
-  width: 30px;
-  height: 30px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  background: rgba(53, 224, 208, 0.14);
-  color: var(--teal);
-  font-weight: 800;
-  font-size: 14px;
-}
-
-.username {
-  display: inline-block;
-  padding: 3px 9px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.09);
-  color: #fff;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-weight: 700;
-  text-decoration: none;
 }
 
 .form-grid {
@@ -604,12 +539,12 @@ footer {
     </h1>
 
     <p>
-      Выбери нужное количество баксов — сайт сразу покажет, какие подарки Telegram отправить.
-      После оплаты заполни заявку, и мы передадим Bucks через манекен.
+      Выбери нужное количество баксов в заявке — сайт автоматически покажет,
+      какие подарки Telegram нужно отправить. После оплаты мы передадим Bucks через манекен.
     </p>
 
     <div class="hero-actions">
-      <a class="button button-primary" href="#plans">Выбрать пакет</a>
+      <a class="button button-primary" href="#order-form">Оформить заявку</a>
       <a class="button button-ghost" href="#faq">Как это работает</a>
     </div>
   </header>
@@ -617,51 +552,16 @@ footer {
   <section class="section" id="plans">
     <div class="section-head">
       <h2><span class="number">1</span>Выбери пакет Bucks</h2>
-      <p>После выбора пакета сайт автоматически покажет нужные подарки для оплаты.</p>
+      <p>Выбери нужное количество Bucks в заявке ниже — подарки подставятся автоматически.</p>
     </div>
 
     <div class="plans" id="plans-grid"></div>
   </section>
 
-  <section class="section">
-    <div class="order">
-      <div class="order-top">
-        <div class="order-title"><span class="number">2</span>Оплата и передача</div>
-        <div class="pill">Проверка вручную • 5–15 минут</div>
-      </div>
-
-      <div class="gift-box">
-        <div class="gift-label">Что отправить в Telegram</div>
-        <div class="gift-output" id="gift-output">Выбери пакет выше, чтобы увидеть нужные подарки</div>
-      </div>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div>
-            Нажми <b>«Оплатить»</b> — откроется Telegram-аккаунт
-            <a class="username" href="https://t.me/metadps" target="_blank" rel="noopener">@metadps</a>.
-            Отправь подарки, указанные выше.
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">2</div>
-          <div>После оплаты заполни заявку ниже: ник в Roblox, Telegram и выбранный пакет.</div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <div>Мы проверим оплату и передадим Bucks через <b>манекен</b> в Adopt Me.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="order-form">
     <div class="section-head">
-      <h2><span class="number">3</span>Оформить заявку</h2>
-      <p>Заполни данные и нажми «Оформить заявку». Заявка сохранится на сайте.</p>
+      <h2><span class="number">2</span>Оформить заявку</h2>
+      <p>Заполни данные и нажми «Оформить заявку». Оплата происходит вместе с заявкой.</p>
     </div>
 
     <div class="order">
@@ -701,6 +601,32 @@ footer {
 
   <section class="section">
     <div class="section-head">
+      <h2>Как проходит оплата</h2>
+      <p>После оформления заявки отправь подарки на Telegram-аккаунт @metadps.</p>
+    </div>
+
+    <div class="order">
+      <div class="gift-box">
+        <div class="gift-label">Куда отправить подарки</div>
+        <div class="gift-output">
+          <a href="https://t.me/metadps" target="_blank" rel="noopener">@metadps</a>
+        </div>
+      </div>
+
+      <div class="gift-box">
+        <div class="gift-label">Что отправить</div>
+        <div class="gift-output" id="payment-gift-output">Выберите пакет в заявке выше</div>
+      </div>
+
+      <div class="gift-box">
+        <div class="gift-label">Передача Bucks</div>
+        <div class="gift-output">Через манекен в Adopt Me</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
       <h2>Почему выбирают нас</h2>
       <p>Прозрачные условия, понятная оплата и быстрая передача валюты.</p>
     </div>
@@ -714,8 +640,8 @@ footer {
 
       <div class="feature">
         <div class="feature-icon">🎁</div>
-        <h3>Удобная оплата</h3>
-        <p>Подарки рассчитываются автоматически после выбора нужного количества Bucks.</p>
+        <h3>Автоматический расчёт</h3>
+        <p>Выбираешь пакет — сайт сразу показывает, какие подарки нужно отправить.</p>
       </div>
 
       <div class="feature">
@@ -745,7 +671,7 @@ footer {
 
       <div class="faq-item">
         <h3>Как быстро приходят баксы?</h3>
-        <p>Проверка подарков и передача валюты происходят вручную через чат на сайте. Обычно процесс занимает от 5 до 15 минут.</p>
+        <p>Проверка подарков и передача валюты происходят вручную. Обычно процесс занимает от 5 до 15 минут.</p>
       </div>
     </div>
   </section>
@@ -818,9 +744,9 @@ const plans = [
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqGIIt4fpW__7YoBd5yV0F4O1iAF47yZ5_nynR0qfOux15Pxpv56VXHS1IsRq4v1gkdA/exec";
 
 const grid = document.getElementById("plans-grid");
-const giftOutput = document.getElementById("gift-output");
-const formGiftOutput = document.getElementById("form-gift-output");
 const planSelect = document.getElementById("selected-plan");
+const formGiftOutput = document.getElementById("form-gift-output");
+const paymentGiftOutput = document.getElementById("payment-gift-output");
 const form = document.getElementById("order-form");
 const formStatus = document.getElementById("form-status");
 
@@ -833,20 +759,14 @@ plans.forEach((plan, index) => {
     <div class="plan-bucks">${plan.bucks}</div>
     <div class="plan-stars">${plan.stars}</div>
     <div class="plan-rub">Оплата: ${plan.gifts}</div>
-    <a class="plan-pay" href="https://t.me/metadps" target="_blank" rel="noopener">
-      Оплатить
-    </a>
   `;
 
-  card.addEventListener("click", event => {
-    if (event.target.closest(".plan-pay")) return;
-
+  card.addEventListener("click", () => {
     document.querySelectorAll(".plan").forEach(item => item.classList.remove("active"));
     card.classList.add("active");
 
-    giftOutput.textContent = `${plan.bucks} → отправьте: ${plan.gifts}`;
-    formGiftOutput.textContent = plan.gifts;
     planSelect.value = index;
+    updateGifts();
   });
 
   grid.appendChild(card);
@@ -857,8 +777,20 @@ plans.forEach((plan, index) => {
   planSelect.appendChild(option);
 });
 
-giftOutput.textContent = `${plans[0].bucks} → отправьте: ${plans[0].gifts}`;
-formGiftOutput.textContent = plans[0].gifts;
+function updateGifts() {
+  const plan = plans[planSelect.value];
+
+  if (!plan) {
+    formGiftOutput.textContent = "Выберите пакет выше";
+    paymentGiftOutput.textContent = "Выберите пакет в заявке выше";
+    return;
+  }
+
+  formGiftOutput.textContent = plan.gifts;
+  paymentGiftOutput.textContent = plan.gifts;
+}
+
+planSelect.addEventListener("change", updateGifts);
 
 form.addEventListener("submit", async event => {
   event.preventDefault();
@@ -901,7 +833,8 @@ form.addEventListener("submit", async event => {
     if (result.success) {
       form.reset();
       formGiftOutput.textContent = "Выберите пакет выше";
-      formStatus.textContent = "✅ Заявка отправлена! После проверки оплаты мы передадим Bucks через манекен.";
+      paymentGiftOutput.textContent = "Выберите пакет в заявке выше";
+      formStatus.textContent = "✅ Заявка отправлена! Отправьте указанные подарки на @metadps. После проверки мы передадим Bucks через манекен.";
       formStatus.className = "form-status success";
     } else {
       throw new Error(result.error || "Ошибка отправки");
