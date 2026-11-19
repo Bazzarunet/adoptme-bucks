@@ -400,21 +400,6 @@ h1 {
   width: 100%;
 }
 
-.form-status {
-  margin-top: 14px;
-  font-size: 14px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.form-status.success {
-  color: var(--green);
-}
-
-.form-status.error {
-  color: var(--red);
-}
-
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -566,7 +551,7 @@ footer {
   <section class="section" id="order-form">
     <div class="section-head">
       <h2><span class="number">2</span>Оформить заявку</h2>
-      <p>Заполни данные и нажми «Оформить заявку». Оплата происходит вместе с заявкой.</p>
+      <p>Заполни данные и нажми «Оформить заявку». После этого сразу отправь подарки.</p>
     </div>
 
     <div class="order">
@@ -606,8 +591,6 @@ footer {
         <button type="submit" class="button button-primary">
           Оформить заявку
         </button>
-
-        <div id="form-status" class="form-status"></div>
       </form>
 
       <iframe
@@ -766,8 +749,6 @@ const formGiftOutput = document.getElementById("form-gift-output");
 const paymentGiftOutput = document.getElementById("payment-gift-output");
 const giftsInput = document.getElementById("gifts-input");
 const form = document.getElementById("order-form");
-const formStatus = document.getElementById("form-status");
-const hiddenIframe = document.getElementById("hidden_iframe");
 
 plans.forEach(plan => {
   const card = document.createElement("div");
@@ -817,27 +798,13 @@ form.addEventListener("submit", () => {
   const plan = plans.find(item => item.bucks === planSelect.value);
 
   if (!plan) {
-    formStatus.textContent = "❌ Выберите пакет Bucks.";
-    formStatus.className = "form-status error";
+    alert("Выберите пакет Bucks.");
     return;
   }
 
   giftsInput.value = plan.gifts;
 
-  formStatus.textContent = "Отправляем заявку...";
-  formStatus.className = "form-status";
-});
-
-hiddenIframe.addEventListener("load", () => {
-  if (formStatus.textContent === "Отправляем заявку...") {
-    form.reset();
-    formGiftOutput.textContent = "Выберите пакет выше";
-    paymentGiftOutput.textContent = "Выберите пакет в заявке выше";
-    giftsInput.value = "";
-
-    formStatus.textContent = "✅ Заявка отправлена! Отправьте указанные подарки на @metadps. После проверки мы передадим Bucks через манекен.";
-    formStatus.className = "form-status success";
-  }
+  window.location.href = "https://t.me/metadps";
 });
 </script>
 
