@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bazzarunet.github.io/adoptme-bucks/sitemap.xml
