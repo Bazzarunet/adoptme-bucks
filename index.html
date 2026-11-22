@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#07080f">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="AdoptMe Bucks">
+<meta property="og:site_name" content="Bazzarunet">
 <meta property="og:title" content="Купить баксы Adopt Me за Telegram Stars — без карты и без Robux">
 <meta property="og:description" content="Оплата подарками Telegram Stars: банковская карта и Robux не нужны. Пакеты от 10 000 Bucks, нужен всего 1 манекен, передача 5–15 минут.">
 <meta property="og:url" content="https://bazzarunet.github.io/adoptme-bucks/">
@@ -30,7 +30,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "AdoptMe Bucks",
+  "name": "Bazzarunet",
   "url": "https://bazzarunet.github.io/adoptme-bucks/",
   "inLanguage": "ru-RU",
   "description": "Покупка Bucks для Adopt Me Roblox за подарки Telegram Stars — без банковской карты и без Robux."
@@ -188,10 +188,6 @@ body {
   color: #17120a;
   font-size: 19px;
   box-shadow: 0 8px 24px rgba(255, 175, 45, 0.28);
-}
-
-.logo span {
-  color: var(--gold);
 }
 
 .nav-links {
@@ -953,9 +949,38 @@ footer {
   color: var(--muted);
   font-size: 14px;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-top {
+  display: flex;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 14px;
+  gap: 8px 24px;
   flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.footer-tagline {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-legal {
+  max-width: 860px;
+  color: #7b849f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.footer-legal p + p {
+  margin-top: 6px;
 }
 
 @media (max-width: 760px) {
@@ -976,6 +1001,11 @@ footer {
 @media (max-width: 640px) {
   body {
     padding: 16px 12px 48px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 6px;
   }
 
   .topbar {
@@ -1013,7 +1043,7 @@ footer {
   <nav class="topbar">
     <a class="logo" href="#top">
       <div class="logo-mark">🐾</div>
-      Adopt<span>Me</span> Bucks
+      Bazzarunet
     </a>
     <div class="nav-links">
       <a href="#plans">Пакеты</a>
@@ -1396,8 +1426,22 @@ footer {
   </section>
 
   <footer>
-    <span>© 2026 AdoptMe Bucks</span>
-    <span>Купить Bucks в Adopt Me за Telegram Stars — без карты и без Robux</span>
+    <div class="footer-top">
+      <span class="footer-brand">© 2026 Bazzarunet</span>
+      <span class="footer-tagline">Купить Bucks в Adopt Me за Telegram Stars — без карты и без Robux</span>
+    </div>
+
+    <div class="footer-legal">
+      <p>
+        Bazzarunet не связан, не аффилирован и не является партнёром Uplift Games LLC и Roblox Corporation.
+        Сервис не авторизован, не одобрен и не спонсируется Uplift Games LLC или Roblox Corporation.
+        Все товарные знаки принадлежат их законным владельцам.
+      </p>
+      <p>
+        Bazzarunet is not affiliated with, endorsed by, or sponsored by Uplift Games LLC or Roblox Corporation.
+        All trademarks are the property of their respective owners.
+      </p>
+    </div>
   </footer>
 
 </div>
